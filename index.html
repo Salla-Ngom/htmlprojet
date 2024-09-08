@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil CAFPC</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for the navbar */
+        body {
+            background-image: linear-gradient(to right, #007bff, #6c757d);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: #007bff;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+            top: 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffc107;
+        }
+
+        .btn-custom {
+            background-color: #ffc107;
+            color: #007bff;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: none;
+        }
+
+        .btn-custom:hover {
+            background-color: white;
+            color: #007bff;
+        }
+
+        /* Flexbox to center the form between navbar and footer */
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            padding: 100px 20px 40px;
+        }
+
+        .form-box {
+            background-color: whitesmoke;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .form-box h2 {
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-align: center;
+            color: #007bff;
+        }
+
+        .form-box input,
+        .form-box select {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .form-box button {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-box button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            color: #6c757d;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            width: 100%;
+            border-top: 1px solid #e9ecef;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">CAFPC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dash">A-propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-custom nav-link" href="Authentification">Connexion</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Form Section -->
+    <div class="form-container">
+        <div class="form-box">
+            <h2>Demande de Prêt</h2>
+            <form action="/submit" method="POST" enctype="multipart/form-data">
+                <div class="row">
+                    <!-- Nom -->
+                    <div class="col-md-6">
+                        <input type="text" name="nom" placeholder="Nom" required>
+                    </div>
+                    <!-- Prénom -->
+                    <div class="col-md-6">
+                        <input type="text" name="prenom" placeholder="Prénom" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Téléphone -->
+                    <div class="col-md-6">
+                        <input type="tel" name="telephone" placeholder="Téléphone" required>
+                    </div>
+                    <!-- Adresse -->
+                    <div class="col-md-6">
+                        <input type="text" name="adresse" placeholder="Adresse" required>
+                    </div>
+                </div>
+                <!-- Photo d'identité -->
+                <div>
+                    <label>Photo d'identité</label>
+                    <input type="file" name="photo" accept="image/*" required>
+                </div>
+                <!-- Recto Carte d'identité -->
+                <div>
+                    <label>Recto Carte d'identité</label>
+                    <input type="file" name="recto" accept="image/*" required>
+                </div>
+                <!-- Verso Carte d'identité -->
+                <div>
+                    <label>Verso Carte d'identité</label>
+                    <input type="file" name="verso" accept="image/*" required>
+                </div>
+                <div class="row">
+                    <!-- Garant 1 -->
+                    <div class="col-md-6">
+                        <input type="text" name="garant1" placeholder="Nom complet du garant 1" required>
+                    </div>
+                    <!-- Numéro Garant 1 -->
+                    <div class="col-md-6">
+                        <input type="tel" name="numero_garant1" placeholder="Numéro Garant 1" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Garant 2 -->
+                    <div class="col-md-6">
+                        <input type="text" name="garant2" placeholder="Nom complet du garant 2" required>
+                    </div>
+                    <!-- Numéro Garant 2 -->
+                    <div class="col-md-6">
+                        <input type="tel" name="numero_garant2" placeholder="Numéro Garant 2" required>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit">Soumettre</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; DEL-2024 | CAFPC
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
